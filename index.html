@@ -76,11 +76,11 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--ios-blue);outli
 .lk-date .lk-hint{font-size:18px;opacity:0;filter:blur(4px);translate:0 4px;text-shadow:0 1px 3px rgba(0,0,0,.45),0 0 12px rgba(0,0,0,.25)}
 .lk-date.hinting #lkDate{opacity:0;filter:blur(4px);translate:0 -4px}
 .lk-date.hinting .lk-hint{opacity:1;filter:none;translate:0 0}
-.lk-date .lk-hint{animation:hintFloat 3s ease-in-out infinite}
+.lk-date .lk-hint{animation:hintFloat 3s ease-in-out infinite;will-change:transform;backface-visibility:hidden}
 @keyframes hintFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 .lk-time{position:absolute;top:94px;width:100%;text-align:center;font-family:var(--font);font-size:100px;font-weight:600;letter-spacing:-2px;line-height:1.1;color:var(--white);text-shadow:0 1px 14px rgba(0,0,0,.18);font-variant-numeric:tabular-nums}
 .lk-notis{position:absolute;left:8px;right:8px;bottom:118px;display:flex;flex-direction:column;gap:8px}
-.noti-wrap{position:relative;animation:notiIn .5s both, notiFloat 5s ease-in-out infinite}
+.noti-wrap{position:relative;will-change:translate,transform;backface-visibility:hidden;animation:notiIn .5s both, notiFloat 5s ease-in-out infinite}
 @keyframes notiFloat{0%,100%{translate:0 0}50%{translate:0 -2px}}
 .noti-wrap.stacked{padding-bottom:16px}
 .noti-peek{position:absolute;left:12px;right:12px;top:60px;height:14px;border-radius:0 0 18px 18px;background:var(--noti-peek);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
@@ -396,7 +396,9 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--ios-blue);outli
 #hapticSwitch{position:fixed;left:-9999px;top:0;opacity:0;pointer-events:none}
 .sim-note{position:fixed;left:0;right:0;bottom:max(10px, env(safe-area-inset-bottom, 0px));text-align:center;font-size:12px;color:var(--page-ink);pointer-events:none;padding:0 16px}
 @media (max-width:500px){.sim-note{display:none}}
-@media (prefers-reduced-motion: reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+/* '동작 줄이기'가 켜진 기기: 큰 움직임은 끄되, 반복 애니메이션이 0.01ms로 무한 반복돼 떨리지 않게 1회로 고정.
+   요청하신 둥둥 효과(알림·잠금 해제 문구)는 아주 작은 움직임이라 그대로 유지해요. */
+@media (prefers-reduced-motion: reduce){*:not(.noti-wrap):not(.lk-hint){animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style>
 
 <div id="stage">
