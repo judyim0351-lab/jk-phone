@@ -51,9 +51,7 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--ios-blue);outli
 .vol1{left:-20px;top:180px;height:60px}.vol2{left:-20px;top:250px;height:60px}.act{left:-20px;top:120px;height:32px}
 #screen{position:relative;width:100%;height:100%;border-radius:55px;overflow:hidden;overflow:clip;background:var(--black);color:var(--white);touch-action:none;user-select:none;-webkit-user-select:none;font-family:var(--font)}
 @media (max-width:500px){
-  #device{width:393px;height:852px;border:0;border-radius:0;box-shadow:none;transform-origin:top center;transform:scale(var(--mscale,1))!important;flex:none}
-  #stage{display:block;position:relative}
-  #device{position:absolute;left:50%;top:0;margin-left:-196.5px}
+  #device{width:100vw;height:100%;border:0;border-radius:0;box-shadow:none;transform:none!important}
   #screen{border-radius:0}
   .sidekey{display:none}
 }
@@ -1126,7 +1124,7 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--ios-blue);outli
 /* 폰에서 '홈 화면에 추가'로 열면(전체 화면 앱 모드) 진짜 상태 바·다이내믹 아일랜드가 위에 겹치므로 가짜는 숨겨요 */
 @media (display-mode: standalone) and (max-width:500px), (display-mode: fullscreen) and (max-width:500px){ #status,.island{display:none} }
 html,body{overscroll-behavior:none}
-@media (max-width:500px){ #stage{height:100dvh} }
+@media (max-width:500px){ #stage,#device{height:100dvh} }
 /* '동작 줄이기'가 켜진 기기: 큰 움직임은 끄되, 반복 애니메이션이 0.01ms로 무한 반복돼 떨리지 않게 1회로 고정.
    요청하신 둥둥 효과(알림·잠금 해제 문구)와 자물쇠 열림 연출은 그대로 유지해요. */
 @media (prefers-reduced-motion: reduce){*:not(.noti-wrap):not(.lk-hint):not(.pc-lock):not(.shackle){animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
@@ -2202,14 +2200,7 @@ let page = 0, pagerMoved = false;
 /* ---------- 화면 배율 ---------- */
 function fit(){
   const dev = $('#device');
-  if (innerWidth <= 500){
-    // 휴대폰 브라우저: 화면의 85%만 쓰도록 축소해서 글씨가 덜 커 보이게 해요
-    const s = Math.min(innerWidth * .85 / 393, innerHeight / 852);
-    document.documentElement.style.setProperty('--mscale', s);
-    dev.style.transform = '';
-    return;
-  }
-  document.documentElement.style.removeProperty('--mscale');
+  if (innerWidth <= 500){ dev.style.transform=''; return; }
   // 컴퓨터 화면에서는 화면 높이의 약 88%만 쓰도록 맞춰요 (브라우저 75% 축소 때와 비슷한 크기)
   const s = Math.min(.9, (innerHeight - 56) * .88 / 878, (innerWidth - 40) / 419);
   dev.style.transform = `scale(${s})`;
