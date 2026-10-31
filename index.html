@@ -2212,13 +2212,13 @@ const CONFIG = {
     { id: 'bro',      name: '친형',          phone: '010-6630-2185', color: '#9aa5b1' },
     { id: 'dad',      name: '아빠',          phone: '010-1957-4402', color: '#8a9bb0' },
     { id: 'mom',      name: '엄마',          phone: '010-2345-6789', color: '#8e9ab3', fav: true, avatar: MOM_AV },
-    { id: 'sehwa',    name: '세화',          phone: '010-6628-1745', color: '#cf9fb0' },
+    { id: 'sehwa',    name: '세희',          phone: '010-6628-1745', color: '#cf9fb0' },
   ],
 
   // 잠금화면 알림 (open: 잠금 해제 후 바로 열릴 화면)
   lockNotifications: [
     { app: 'phone', title: '엄마',     body: '부재중 전화',     when: '오전 8:30', open: { app: 'phone' } },
-    { app: 'kakao', title: '카카오톡', body: '4 알림', when: '오전 10:47', stack: true, open: { app: 'kakao' } },
+    { app: 'kakao', title: '카카오톡', body: '4 알림', when: '오전 11:27', stack: true, badge: 4, open: { app: 'kakao' } },
   ],
 
   // 문자 대화
@@ -2628,7 +2628,7 @@ const CONFIG = {
       { me: true, text: '아니거든', time: '오후 7:58' },
       { me: true, text: '헛소리 좀 하지 마라 진짜ㅋㅋㅋ', time: '오후 7:58' },
       { me: false, text: '아니면 말고ㅋㅋㅋ', time: '오후 7:59' },
-      { me: false, text: '아 아무튼 표정 좋아 보여서 다행이네 행복해~', time: '오후 7:59' },
+      { me: false, text: '아 아무튼 표정 좋아 보여서 다행이네 행복해라', time: '오후 7:59' },
     ]},
     { id: 'jedong', contact: 'jedong', unread: 0, day: '2021년 4월 14일 수요일', msgs: [
       { me: false, text: '야 정국아', time: '오후 11:00' },
@@ -2769,7 +2769,7 @@ const CONFIG = {
       { me: true, text: '알았으니까 걱정하지말라고요ㅋㅋ', time: '오전 8:49' },
       { me: false, day: '2021년 12월 29일 수요일', text: '아들~ 엄마 이제 비행기 탔다!', time: '오전 8:33' },
     ]},
-    { id: 'dohyung', contact: 'dohyung', unread: 1, day: '2021년 3월 5일 금요일', msgs: [
+    { id: 'dohyung', contact: 'dohyung', unread: 2, day: '2021년 3월 5일 금요일', msgs: [
       { me: false, text: '야 동아리 회비 냈냐?', time: '오후 5:21' },
       { me: false, text: '너 아직 안 냈음', time: '오후 5:21' },
       { me: false, text: '빨리 내라 총무가 나한테 계속 닦달함ㅡㅡ', time: '오후 5:22' },
@@ -2837,7 +2837,8 @@ const CONFIG = {
       { me: false, text: '아 이 알콜중독자 새끼야 너 맨날 술인 거 알긴 하냐?', time: '오후 8:46' },
       { me: true,  text: '아 오기 싫음 오지 마라..', time: '오후 8:47' },
       { me: true,  text: '잔소리 존나 하네', time: '오후 8:47' },
-      { me: false, day: '2021년 12월 29일 수요일', text: '전정국 아직도 자냐?', time: '오전 11:26' },
+      { me: false, day: '2021년 12월 29일 수요일', text: '뭐함?', time: '오전 11:25' },
+      { me: false, text: '전정국 아직도 자냐?', time: '오전 11:27' },
     ]},
     { id: 'sunwoo', contact: 'sunwoo', unread: 0, day: '2021년 12월 29일 수요일', msgs: [
       { me: true, text: '태형 선배 연락을 안 받는데요 뭐 아는 거 있어요?', time: '오전 11:20' },
