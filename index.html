@@ -347,14 +347,18 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--ios-blue);outli
 .mu-row .t b{display:block;font-size:17px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mu-row .t span{display:block;font-size:15px;color:#8a8a8e;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mu-row.on .t b{color:#fa2d48}
-.mu-eq{display:none;align-items:flex-end;gap:2px;height:15px;flex:none}
+.mu-eq{display:none;align-items:flex-end;gap:2.5px;height:15px;flex:none}
 .mu-row.on .mu-eq{display:flex}
-.mu-eq i{width:3px;background:#fa2d48;border-radius:1px;animation:muEq .9s ease-in-out infinite}
-.mu-eq i:nth-child(1){height:7px;animation-delay:-.2s}
-.mu-eq i:nth-child(2){height:14px;animation-delay:-.5s}
-.mu-eq i:nth-child(3){height:10px}
-@keyframes muEq{0%,100%{transform:scaleY(.4)}50%{transform:scaleY(1)}}
-.mu-eq.pause i{animation-play-state:paused}
+.mu-eq i{width:2.6px;border-radius:1px;transform-origin:bottom;background:linear-gradient(to top,#fa2d48,#ff6b81);box-shadow:0 0 2px rgba(250,45,72,.5)}
+.mu-eq i:nth-child(1){height:11px;animation:muEq1 1.05s ease-in-out infinite}
+.mu-eq i:nth-child(2){height:15px;animation:muEq2 .78s ease-in-out infinite}
+.mu-eq i:nth-child(3){height:9px;animation:muEq3 .92s ease-in-out infinite}
+.mu-eq i:nth-child(4){height:13px;animation:muEq4 .66s ease-in-out infinite}
+@keyframes muEq1{0%{transform:scaleY(.32)}22%{transform:scaleY(.78)}45%{transform:scaleY(.5)}68%{transform:scaleY(1)}100%{transform:scaleY(.32)}}
+@keyframes muEq2{0%{transform:scaleY(.6)}30%{transform:scaleY(.26)}55%{transform:scaleY(1)}80%{transform:scaleY(.42)}100%{transform:scaleY(.6)}}
+@keyframes muEq3{0%{transform:scaleY(.9)}25%{transform:scaleY(.4)}50%{transform:scaleY(.7)}75%{transform:scaleY(.22)}100%{transform:scaleY(.9)}}
+@keyframes muEq4{0%{transform:scaleY(.38)}35%{transform:scaleY(1)}60%{transform:scaleY(.3)}85%{transform:scaleY(.72)}100%{transform:scaleY(.38)}}
+.mu-eq.pause i{animation-play-state:paused;opacity:.55}
 .mu-count{text-align:center;color:#8a8a8e;font-size:15px;padding:16px 0}
 .mu-mini{flex:none;display:flex;align-items:center;gap:12px;margin:0 10px 26px;padding:8px 14px 8px 8px;border-radius:16px;background:#f6f6f8;box-shadow:0 2px 10px rgba(0,0,0,.08)}
 .mu-mini .art{width:42px;height:42px;border-radius:5px;flex:none;overflow:hidden}
@@ -4570,7 +4574,7 @@ function renderMusic(){
     <button class="mu-row ${i === muCur && muPlaying ? 'on' : ''}" data-song="${i}">
       <span class="art">${muArt(t)}</span>
       <span class="t"><b>${esc(t.title)}</b><span>${esc(t.artist)}</span></span>
-      <span class="mu-eq"><i></i><i></i><i></i></span>
+      <span class="mu-eq"><i></i><i></i><i></i><i></i></span>
     </button>`).join('');
   $('#muCount').textContent = `${list.length}곡`;
   muSyncMini();
